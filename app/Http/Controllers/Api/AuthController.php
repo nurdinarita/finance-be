@@ -45,12 +45,11 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
-        // Kirim token + user info
-        return ApiResponse::success([
-            'user'  => new AuthResource($user),
-            'token' => $token,
+        return response()->json([
+            'access_token' => $token,
             'token_type' => 'Bearer',
-        ], 'Login successful');
+            'user' => $user->only('name', 'email', 'photo')
+        ]);
     }
 
 

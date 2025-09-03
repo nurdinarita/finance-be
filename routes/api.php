@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\AuthController;
 
 use App\Http\Controllers\Api\AccountBook\AccountBookController;
 use App\Http\Controllers\Api\Member\MemberController;
+use App\Http\Controllers\Api\Category\CategoryController;
 
 // Auth
 Route::post('/register', [AuthController::class, 'register']);
@@ -23,5 +24,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Members
     Route::get('/members', [MemberController::class, 'index']);
     Route::post('/members', [MemberController::class, 'store']);
+
+    // Categories
+    Route::get('/categories', [CategoryController::class, 'index']);
+    Route::post('/categories', [CategoryController::class, 'store']);
 });
 
